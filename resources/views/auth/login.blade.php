@@ -15,7 +15,7 @@
 
         <script type="text/javascript" src="{{ asset('js/login.js') }}"></script>
 
-        <title>ByonChat CMS Template</title>
+        <title>Ticket Web Administration</title>
 
     </head>
 
@@ -37,7 +37,7 @@
             </div>
             @endif
 
-            <div class="mx-auto" style="font-family: gothic;color:white;display:table;font-size: 5em;">S M S&nbsp;&nbsp;&nbsp;&nbsp;M O N I T O R I N G</div>
+            <div class="mx-auto" style="font-family: gothic;color:white;display:table;font-size: 5em;">T I C K E T&nbsp;&nbsp;&nbsp;&nbsp;M O N I T O R I N G</div>
 
             <div class="mx-auto text-center" id="kotaklogin">
                 <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate style="top: 110px;position: relative;left: 80px;width:240px;">
