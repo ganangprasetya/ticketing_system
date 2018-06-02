@@ -25,7 +25,7 @@
                     </li>
                     @endrole
                     <li class="nav-item">
-                        <a class="nav-link nav-workstation menu-top{{ (Request::segment(1) == "workstation") ? ' active':'' }}" href="#" onclick="clickMenu('workstation');return false;" data-key="workstation">
+                        <a class="nav-link nav-workstation menu-top{{ (Request::segment(1) == "monitoring") ? ' active':'' }}" href="#" onclick="clickMenu('monitoring');return false;" data-key="monitoring">
                             <div class="icon-workstation"></div> Monitoring
                         </a>
                     </li>
@@ -43,16 +43,16 @@
                         <a class="nav-link menu-middle{{ (Request::segment(2) == "users") ? ' active':'' }}" href="#" onclick="clickSubmenu('manage_users');return false;" data-clicked="false" data-key="manage_users">User Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-middle{{ (Request::segment(2) == "customers") ? ' active':'' }}" href="#" onclick="clickSubmenu('manage_customers');return false;" data-clicked="false" data-key="manage_customers">Customer Management</a>
+                        <a class="nav-link menu-middle{{ (Request::segment(2) == "companies") ? ' active':'' }}" href="#" onclick="clickSubmenu('manage_companies');return false;" data-clicked="false" data-key="manage_companies">Company Management</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-lg main-navbar menu-dropdown{{ (Request::segment(1) != "workstation") ? ' d-none':'' }}" data-pair="workstation">
+        <nav class="navbar navbar-expand-lg main-navbar menu-dropdown{{ (Request::segment(1) != "monitoring") ? ' d-none':'' }}" data-pair="monitoring">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link menu-middle{{ (Request::segment(2) == "ticketing") ? ' active':'' }}" href="#" onclick="clickSubmenu('ticketing');return false;" data-clicked="false" data-key="ticketing">Ticket Management</a>
+                        <a class="nav-link menu-middle{{ (Request::segment(2) == "tickets") ? ' active':'' }}" href="#" onclick="clickSubmenu('manage_tickets');return false;" data-clicked="false" data-key="manage_tickets">Ticket Management</a>
                     </li>
                 </ul>
             </div>
@@ -75,31 +75,31 @@
                     </ul>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg main-navbar submenu-dropdown{{ (Request::segment(2) != "customers") ? ' d-none':'' }}" data-pair="manage_customers">
+            <nav class="navbar navbar-expand-lg main-navbar submenu-dropdown{{ (Request::segment(2) != "companies") ? ' d-none':'' }}" data-pair="manage_companies">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link{{ ((Request::segment(2) == "customers") && (Request::segment(3) == "create")) ? ' active':'' }}" href="#">Create Customer</a>
+                            <a class="nav-link{{ ((Request::segment(2) == "companies") && (Request::segment(3) == "create")) ? ' active':'' }}" href="{{ route('companies.create') }}">Create Company</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link{{ ((Request::segment(2) == "customers") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="#">Manage Customers</a>
+                            <a class="nav-link{{ ((Request::segment(2) == "companies") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="{{ route('companies.manage') }}">Manage Companies</a>
                         </li>
                     </ul>
                 </div>
             </nav>
             <!-- Work Station Dropdown -->
             <div id="containerWorkstationDropdown">
-                <nav class="navbar navbar-expand-lg main-navbar submenu-dropdown{{ (Request::segment(2) != "ticketing") ? ' d-none':'' }}" data-pair="ticketing">
+                <nav class="navbar navbar-expand-lg main-navbar submenu-dropdown{{ (Request::segment(2) != "tickets") ? ' d-none':'' }}" data-pair="manage_tickets">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link{{ ((Request::segment(2) == "ticketing") && (Request::segment(3) == "create")) ? ' active':'' }}" href="#">Create Ticket</a>
+                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "create")) ? ' active':'' }}" href="{{ route('tickets.create') }}">Create Ticket</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link{{ ((Request::segment(2) == "ticketing") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="#">Manage Tickets</a>
+                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="#">Manage Tickets</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link{{ ((Request::segment(2) == "ticketing") && (Request::segment(3) == "lists")) ? ' active':'' }}" href="#">List Tickets</a>
+                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "lists")) ? ' active':'' }}" href="#">List Tickets</a>
                             </li>
                         </ul>
                     </div>

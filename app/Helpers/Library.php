@@ -27,13 +27,12 @@ class Library{
         return false;
     }
 
-    public static function generateTransactionId()
+    public static function generateTicketId()
     {
         $date = Carbon::now();
+        $ticket_id = strtoupper($date->format('Ymd').'-');
 
-        $trx_id = strtoupper('PS'.$date->format('YmdHis').str_random(3));
-
-        return $trx_id;
+        return $ticket_id;
     }
 
     public static function generateMessageId()

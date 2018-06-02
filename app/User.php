@@ -30,8 +30,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function database()
+    public function ticket()
     {
-        return $this->hasMany('App\UserDatabase');
+        return $this->hasMany('App\Ticket');
     }
 }

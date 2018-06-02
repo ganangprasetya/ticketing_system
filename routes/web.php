@@ -39,9 +39,15 @@ Route::middleware(['auth', 'role:administrator|user'])->group(function(){
             Route::get('users/lists', 'UsersController@lists')->name('users.list');
             Route::get('users/lists/exportxls', 'UsersController@exportxls')->name('users.xls');
             Route::get('users/manage', 'UsersController@index')->name('users.manage');
+
+            //company Management
+            Route::resource('companies', 'CompaniesController', ['except' => [
+                'show'
+            ]]);
+            Route::get('companies/manage', 'CompaniesController@index')->name('companies.manage');
         });
         // Master Data
-        Route::prefix('ticketmanagement')->group(function(){
-            
+        Route::prefix('monitoring')->group(function(){
+            Route::resource('tickets', 'TicketsController');
         });
 });
