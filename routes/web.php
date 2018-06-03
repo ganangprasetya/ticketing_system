@@ -48,6 +48,9 @@ Route::middleware(['auth', 'role:administrator|user'])->group(function(){
         });
         // Master Data
         Route::prefix('monitoring')->group(function(){
-            Route::resource('tickets', 'TicketsController');
+            Route::resource('tickets', 'TicketsController', ['except' => [
+                'show'
+            ]]);
+            Route::get('tickets/manage', 'TicketsController@index')->name('tickets.manage');
         });
 });

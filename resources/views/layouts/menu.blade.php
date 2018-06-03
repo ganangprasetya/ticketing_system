@@ -96,7 +96,7 @@
                                 <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "create")) ? ' active':'' }}" href="{{ route('tickets.create') }}">Create Ticket</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="#">Manage Tickets</a>
+                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "manage")) ? ' active':'' }}" href="{{ route('tickets.manage') }}">Manage Tickets</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "lists")) ? ' active':'' }}" href="#">List Tickets</a>

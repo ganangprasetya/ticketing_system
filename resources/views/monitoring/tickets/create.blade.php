@@ -15,12 +15,12 @@
         </div>
         <div class="row">
             <div class="col">
-                <form method="POST" action="{{ route('tickets.store') }}" class="needs-validation" enctype="multipart/form-data" novalidate>
+                <form method="POST" action="{{ route('tickets.store') }}" class="needs-validation" novalidate>
                     {{ csrf_field() }}
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan="2" class="text-left">Add Company</th>
+                                <th colspan="2" class="text-left">Add Ticket</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +84,7 @@
                             </tr>
                             <tr class="border-bottom">
                                 <th></th>
-                                <th><button type="submit" class="btn btn-primary">Create</button></th>
+                                <th><button type="submit" class="btn btn-primary">Add</button></th>
                             </tr>
                         </tbody>
                     </table>

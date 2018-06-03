@@ -20,9 +20,27 @@ class TicketsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        //
+        $paginate_limit = env('PAGINATE_LIMIT', 10);
+
+        // search roles
+        $tickets = Ticket::latest()->paginate($paginate_limit);
+        if (count($request->query()) > 0) {
+            $filter = $request->query('filter');
+            $keyword = $request->query('keyword');
+
+            switch ($filter) {
+                case "name":
+                    $tickets = Company::where('name', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
+                    break;
+                default:
+                    $tickets = Company::where('name', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
+            }
+        }
+        $offset = $tickets->perPage() * ($tickets->currentPage() - 1);
+
+        return view(self::VIEW_PATH . '.index')->with(compact('tickets', 'offset'));
     }
 
     /**
@@ -44,17 +62,25 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id;
-        $ticket = Ticket::latest()->first()->ticket_id;
-        $ticket_id = Library::generateTicketId();
-        return $ticket_id;
         $request->validate([
-            'ticket_id' => 'required|string|max:255',
             'company' => 'required',
             'pic_complaint' => 'required|string|max:255',
             'date_complaint' => 'required',
             'note' => 'string|nullable|max:255'
         ]);
+        $user_id = Auth::user()->id;
+        //prepare number of ticket
+        $last_ticket = Ticket::latest()->first();
+        if($last_ticket == NULL){
+            $new_number = 1;
+        }else{
+            $strArray = explode('-', $last_ticket->ticket_id);
+            $no = $strArray[1];
+            $new_number = $no + 1;
+        }
+        $new_ticket = $new_number;
+        $prepare_ticket = Library::generateTicketId();
+        $ticket_id = $prepare_ticket.$new_ticket;
         $ticket = Ticket::create([
             'ticket_id' => $ticket_id,
             'company_id' => $request->company,
