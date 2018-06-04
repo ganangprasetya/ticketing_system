@@ -67,6 +67,11 @@
                             <td>{{ (!$ticket->picupdate3) ? '-':$ticket->picupdate3->fullname}}</td>
                         </tr>
                         <tr>
+                            <th>Solution</th>
+                            <th>:</th>
+                            <td>{{ $ticket->note_completion }}</td>
+                        </tr>
+                        <tr>
                             <th>Status</th>
                             <th>:</th>
                             <td>

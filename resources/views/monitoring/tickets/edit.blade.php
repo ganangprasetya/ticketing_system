@@ -111,6 +111,12 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><label for="note_completion" class="col-form-label">Solution</label></td>
+                                <td>
+                                    <textarea name="note_completion" class="col-8 form-control{{ ($errors->has('note_completion')) ? ' is-invalid':'' }}" id="note_completion" placeholder="Solution">{{ old('note',$ticket->note_completion) }}</textarea>
+                                </td>
+                            </tr>
                             <tr class="border-bottom">
                                 <th></th>
                                 <th><button type="submit" class="btn btn-primary">Update</button></th>

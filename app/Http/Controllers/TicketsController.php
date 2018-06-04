@@ -115,12 +115,12 @@ class TicketsController extends Controller
                 //style sheeet excel
                 $sheet->freezeFirstRow();
                 //memakai border untuk header
-                $sheet->cells('A1:M1', function($cells) {
+                $sheet->cells('A1:N1', function($cells) {
                     $cells->setFont(array(
                         'family'     => 'Calibri',
                         'size'       => '14'
                     ));
-                    $cells->setBorder('A1:M1', 'thin');
+                    $cells->setBorder('A1:N1', 'thin');
                 });
                 //header
                 $sheet->row($row,[
@@ -135,6 +135,7 @@ class TicketsController extends Controller
                     'PIC Update 1',
                     'PIC Update 2',
                     'PIC Update 3',
+                    'Solution',
                     'Created At',
                     'Last Updated'
                 ]);
@@ -180,6 +181,7 @@ class TicketsController extends Controller
                         $picupdate,
                         $picupdate2,
                         $picupdate3,
+                        $ticket->note_completion,
                         $ticket->created_at->format('d-m-Y H:i'),
                         $ticket->updated_at->format('d-m-Y H:i')
                     ]);
@@ -294,6 +296,7 @@ class TicketsController extends Controller
             'pic_complaint' => 'required|string',
             'date_complaint' => 'required',
             'note' => 'string|nullable',
+            'note_completion' => 'string|nullable',
             'status' => 'required'
         ]);
         if($ticket->status == 2 AND $request->status == 1){
@@ -312,6 +315,7 @@ class TicketsController extends Controller
             $ticket->date_complaint = $request->date_complaint;
             $ticket->date_complaint = $request->date_complaint;
             $ticket->note = $request->note;
+            $ticket->note_completion = $request->note_completion;
             $ticket->status = $request->status;
             if($request->status == 2){
                 $ticket->pic_update = $user_id;
