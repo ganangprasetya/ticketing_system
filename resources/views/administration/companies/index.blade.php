@@ -2,17 +2,6 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Administration</a></li>
-                        <li class="breadcrumb-item"><a href="#">Company Management</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Manage Companies</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
         <div class="row align-items-center">
             <div class="col search-box">
                 <form method="GET" class="form-inline col-12 justify-content-end">

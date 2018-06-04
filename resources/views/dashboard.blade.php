@@ -3,21 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        @role('administrator')
-                        <li class="breadcrumb-item"><a href="#">Administrator</a></li>
-                        @endrole
-                        @role('user')
-                        <li class="breadcrumb-item"><a href="#">{{ Auth()->user()->fullname }}</a></li>
-                        @endrole
-                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row">
                 <div class="card card-position-1 text-white">
                     <div class="card-header" style="background-color:#4CAF50;">
                         <i class="fas fa-ticket-alt fa-5x"></i>

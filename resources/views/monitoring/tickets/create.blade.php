@@ -4,17 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Monitoring</a></li>
-                        <li class="breadcrumb-item"><a href="#">Ticket Management</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Ticket</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
                 <form method="POST" action="{{ route('tickets.store') }}" class="needs-validation" novalidate>
                     {{ csrf_field() }}
                     <table class="table">

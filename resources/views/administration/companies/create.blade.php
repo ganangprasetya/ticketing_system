@@ -4,17 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Administration</a></li>
-                        <li class="breadcrumb-item"><a href="#">Company Management</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Company</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
                 <form method="POST" action="{{ route('companies.store') }}" class="needs-validation" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <table class="table">

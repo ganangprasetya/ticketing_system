@@ -17,7 +17,8 @@ class Ticket extends Model
         'status',
         'pic_update',
         'pic_update_2',
-        'pic_update_3'
+        'pic_update_3',
+        'note_completion'
     ];
 
     public function company()

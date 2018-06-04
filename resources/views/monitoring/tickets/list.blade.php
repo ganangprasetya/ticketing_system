@@ -2,17 +2,6 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Monitoring</a></li>
-                        <li class="breadcrumb-item"><a href="#">Ticket Management</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">List Tickets</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
         <div class="row align-items-center">
             <div class="col search-box">
                 <div class="row">
