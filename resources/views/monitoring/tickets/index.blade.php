@@ -33,7 +33,7 @@
         </div>
         <div class="row mt-4">
             <div class="col">
-                <table class="table table-hover" style="display: block;overflow-x: auto;white-space: nowrap;">
+                <table class="table table-grid">
                     <thead>
                         <tr>
                             <th width="10" scope="col">
@@ -49,11 +49,10 @@
                             <th scope="col">Company</th>
                             <th scope="col">PIC Complaint</th>
                             <th scope="col">Date Complaint</th>
-                            <th scope="col">Note Complaint</th>
+                            {{-- <th scope="col">Note Complaint</th> --}}
                             <th scope="col">PIC Open</th>
                             <th scope="col">Status</th>
                             <th scope="col">Created At</th>
-                            <th scope="col">Updated At</th>
                             <th width="200" scope="col">Action</th>
                         </tr>
                     </thead>
@@ -76,7 +75,7 @@
                                     $date_complaint = date_create($ticket->date_complaint);
                                 @endphp
                                 <td>{{ date_format($date_complaint, 'd-m-Y H:i') }}</td>
-                                <td>{{ str_limit($ticket->note, 20, '...') }}</td>
+                                {{-- <td>{{ str_limit($ticket->note, 20, '...') }}</td> --}}
                                 <td>{{ $ticket->user->fullname }}</td>
                                 <td>
                                     @if($ticket->status == 1)
@@ -90,10 +89,11 @@
                                     @endif
                                 </td>
                                 <td>{{ $ticket->created_at->format('d-m-Y H:i') }}</td>
-                                <td>{{ $ticket->updated_at->format('d-m-Y H:i') }}</td>
-                                <td>
-                                    <a href="{{ route('tickets.detail', $ticket->id) }}" class="btn btn-info btn-sm " title="Detail Ticket"><i class="fa fa-info-circle"></i></a>
-                                    <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-success btn-sm" title="Update Status Ticket"><i class="far fa-edit"></i></a>
+                                <td align="center">
+                                    <a href="{{ route('tickets.detail', $ticket->id) }}" class="btn btn-info btn-sm " title="Detail Ticket - {{ $ticket->ticket_id }}"><i class="fa fa-info-circle"></i></a>
+                                    @if($ticket->status != 4)
+                                        <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-success btn-sm" title="Update Status Ticket - {{ $ticket->ticket_id }}"><i class="far fa-edit"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

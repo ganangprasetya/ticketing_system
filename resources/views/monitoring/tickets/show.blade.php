@@ -72,7 +72,22 @@
                             <td>{{ $ticket->created_at->format('d-m-Y H:i') }}</td>
                         </tr>
                         <tr>
-                            <th>Updated At</th>
+                            <th>PIC Update 1</th>
+                            <th>:</th>
+                            <td>{{ (!$ticket->picupdate) ? '-':$ticket->picupdate->fullname}}</td>
+                        </tr>
+                        <tr>
+                            <th>PIC Update 2</th>
+                            <th>:</th>
+                            <td>{{ (!$ticket->picupdate2) ? '-':$ticket->picupdate2->fullname}}</td>
+                        </tr>
+                        <tr>
+                            <th>PIC Update 3</th>
+                            <th>:</th>
+                            <td>{{ (!$ticket->picupdate3) ? '-':$ticket->picupdate3->fullname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Updated</th>
                             <th>:</th>
                             <td>{{ $ticket->updated_at->format('d-m-Y H:i') }}</td>
                         </tr>

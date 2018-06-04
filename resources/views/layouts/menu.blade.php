@@ -101,6 +101,9 @@
                             <li class="nav-item">
                                 <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "lists")) ? ' active':'' }}" href="#">List Tickets</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link{{ ((Request::segment(2) == "tickets") && (Request::segment(3) == "logs")) ? ' active':'' }}" href="{{ route('tickets.logs') }}">Log Tickets</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -8,6 +8,7 @@ use Alert;
 use Library;
 use Excel;
 use App\Ticket;
+use App\TicketLog;
 use App\User;
 use App\Company;
 use Carbon\Carbon;
@@ -51,9 +52,8 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        $now = Carbon::now();
         $companies = Company::latest()->get();
-        return view(self::VIEW_PATH . '.create')->with(compact('companies','now'));
+        return view(self::VIEW_PATH . '.create')->with(compact('companies'));
     }
 
     /**
@@ -66,9 +66,9 @@ class TicketsController extends Controller
     {
         $request->validate([
             'company' => 'required',
-            'pic_complaint' => 'required|string|max:255',
+            'pic_complaint' => 'required|string',
             'date_complaint' => 'required',
-            'note' => 'string|nullable|max:255'
+            'note' => 'string|nullable'
         ]);
         $user_id = Auth::user()->id;
         //prepare number of ticket
@@ -91,6 +91,10 @@ class TicketsController extends Controller
             'note' => $request->note,
             'user_id' => $user_id
         ]);
+        $ticketlog = TicketLog::create([
+            'ticket_id' => $ticket->id,
+            'user_id' => $user_id
+        ]);
         alert()->success('Ticket ' . $ticket_id . ' has been added!', 'Success');
         return redirect()->route('tickets.manage');
     }
@@ -101,6 +105,15 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function logs()
+    {
+        $ticketlogs = TicketLog::latest()->paginate(10);
+        $offset = $ticketlogs->perPage() * ($ticketlogs->currentPage() - 1);
+
+        return view(self::VIEW_PATH.'.logsticket', compact('ticketlogs', 'offset'));
+    }
+
     public function detail($id)
     {
         $ticket = Ticket::findOrFail($id);
@@ -115,7 +128,10 @@ class TicketsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $companies = Company::latest()->get();
+        $status = [1,2,3,4];
+        return view(self::VIEW_PATH . '.edit')->with(compact('ticket','companies','status'));
     }
 
     /**
@@ -127,7 +143,41 @@ class TicketsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $user_id = Auth::user()->id;
+        $request->validate([
+            'company' => 'required',
+            'pic_complaint' => 'required|string',
+            'date_complaint' => 'required',
+            'note' => 'string|nullable',
+            'status' => 'required'
+        ]);
+        if($ticket->status == 2 AND $request->status == 1){
+            alert()->warning('Ticket ' . $ticket->ticket_id . ' Already Processed!', 'Warning');
+        }elseif($ticket->status == 3 AND $request->status == 1){
+            alert()->warning('Ticket ' . $ticket->ticket_id . ' Already Pending!', 'Warning');
+        }else{
+            $ticket->company_id = $request->company;
+            $ticket->user_id = $user_id;
+            $ticket->pic_complaint = $request->pic_complaint;
+            $ticket->date_complaint = $request->date_complaint;
+            $ticket->date_complaint = $request->date_complaint;
+            $ticket->note = $request->note;
+            $ticket->status = $request->status;
+            if($request->status == 2){
+                $ticket->pic_update = $user_id;
+            }elseif($request->status == 3){
+                $ticket->pic_update_2 = $user_id;
+            }elseif($request->status == 4){
+                $ticket->pic_update_3 = $user_id;
+                $ticket->save();
+                alert()->success('Ticket ' . $ticket->ticket_id . ' has been closed!', 'Success');
+                return redirect()->route('tickets.manage');
+            }
+            $ticket->save();
+            alert()->success('Ticket ' . $ticket->ticket_id . ' has been updated!', 'Success');
+        }
+        return back();
     }
 
     /**

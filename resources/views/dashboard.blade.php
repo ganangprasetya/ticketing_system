@@ -18,56 +18,54 @@
             </div>
         </div>
         <div class="row">
-            {{-- @role('administrator')
                 <div class="card card-position-1 text-white">
                     <div class="card-header" style="background-color:#4CAF50;">
-                        <i class="fa fa-database fa-5x"></i>
+                        <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="card-title-position">
-                            <p style="font-size:50px;">{{ $databases }}</p>
-                            <p style="margin-top:-20px;"> Database</p>
+                            <p style="font-size:50px;">{{ $opentickets }}</p>
+                            <p style="margin-top:-20px;"> Open Tickets</p>
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('databases.manage') }}" style="color:#4CAF50;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}" style="color:#4CAF50;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="card card-position text-white">
-                    <div class="card-header" style="background-color:#2196F3;">
-                        <i class="fa fa-user fa-5x"></i>
+                <div class="card card-position-1 text-white">
+                    <div class="card-header" style="background-color:#9db69f;">
+                        <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="card-title-position">
-                            <p style="font-size:50px;">{{ $users }}</p>
-                            <p style="margin-top:-20px;"> Users</p>
+                            <p style="font-size:50px;">{{ $processtickets }}</p>
+                            <p style="margin-top:-20px;"> Process Tickets</p>
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('users.manage') }}" style="color:#2196F3;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}" style="color:#9db69f;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="card card-position text-white">
-                    <div class="card-header" style="background-color:#009688;">
-                        <i class="fa fa-table fa-5x"></i>
+                <div class="card card-position-1 text-white">
+                    <div class="card-header" style="background-color:#ffcd32;">
+                        <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="card-title-position">
-                            <p style="font-size:50px;">{{ $tables }}</p>
-                            <p style="margin-top:-20px;"> Tables</p>
+                            <p style="font-size:50px;">{{ $pendingtickets }}</p>
+                            <p style="margin-top:-20px;"> Pending Tickets</p>
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('tables.manage') }}" style="color:#009688;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}" style="color:#ffcd32;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="card card-position text-white">
-                    <div class="card-header" style="background-color:#673AB7;">
-                        <i class="fa fa-users fa-5x"></i>
+                <div class="card card-position-1 text-white">
+                    <div class="card-header" style="background-color:#ff0000;">
+                        <i class="fas fa-ticket-alt fa-5x"></i>
                         <div class="card-title-position">
-                            <p style="font-size:50px;">{{ $actives }}</p>
-                            <p style="margin-top:-20px;"> Active Users</p>
+                            <p style="font-size:50px;">{{ $closetickets }}</p>
+                            <p style="margin-top:-20px;"> Close Tickets</p>
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('databases.userdb') }}" style="color:#673AB7;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}" style="color:#ff0000;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-            @endrole --}}
         </div>
     </div>
 @endsection

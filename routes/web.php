@@ -52,6 +52,7 @@ Route::middleware(['auth', 'role:administrator|user'])->group(function(){
                 'show'
             ]]);
             Route::get('tickets/manage', 'TicketsController@index')->name('tickets.manage');
+            Route::get('tickets/logs', 'TicketsController@logs')->name('tickets.logs');
             Route::get('tickets/{id}', 'TicketsController@detail')->name('tickets.detail');
         });
 });

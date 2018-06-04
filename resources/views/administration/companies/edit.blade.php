@@ -38,7 +38,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
                             <tr class="border-bottom">
                                 <th></th>
                                 <th><button type="submit" class="btn btn-primary">Edit</button></th>
