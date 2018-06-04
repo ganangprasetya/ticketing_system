@@ -8,7 +8,7 @@ class Ticket extends Model
 {
     protected $table = 'ticket_complaints';
     protected $fillable = [
-        'ticket_id', 'company_id', 'pic_complaint', 'date_complaint', 'note', 'user_id', 'status'
+        'ticket_id', 'company_id', 'pic_complaint', 'date_complaint', 'note', 'user_id', 'status','pic_update'
     ];
 
     public function company()

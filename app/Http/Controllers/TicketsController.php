@@ -10,6 +10,7 @@ use Excel;
 use App\Ticket;
 use App\User;
 use App\Company;
+use Carbon\Carbon;
 use Auth;
 
 class TicketsController extends Controller
@@ -50,8 +51,9 @@ class TicketsController extends Controller
      */
     public function create()
     {
+        $now = Carbon::now();
         $companies = Company::latest()->get();
-        return view(self::VIEW_PATH . '.create')->with(compact('companies'));
+        return view(self::VIEW_PATH . '.create')->with(compact('companies','now'));
     }
 
     /**
@@ -90,7 +92,7 @@ class TicketsController extends Controller
             'user_id' => $user_id
         ]);
         alert()->success('Ticket ' . $ticket_id . ' has been added!', 'Success');
-        return back();
+        return redirect()->route('tickets.manage');
     }
 
     /**
@@ -99,9 +101,10 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        return view(self::VIEW_PATH.'.show', compact('ticket'));
     }
 
     /**

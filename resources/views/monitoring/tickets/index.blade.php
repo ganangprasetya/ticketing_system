@@ -72,7 +72,10 @@
                                 <td>{{ $ticket->ticket_id }}</td>
                                 <td>{{ $ticket->company->name }}</td>
                                 <td>{{ $ticket->pic_complaint }}</td>
-                                <td>{{ $ticket->date_complaint }}</td>
+                                @php
+                                    $date_complaint = date_create($ticket->date_complaint);
+                                @endphp
+                                <td>{{ date_format($date_complaint, 'd-m-Y H:i') }}</td>
                                 <td>{{ str_limit($ticket->note, 20, '...') }}</td>
                                 <td>{{ $ticket->user->fullname }}</td>
                                 <td>
@@ -86,11 +89,11 @@
                                         <span class="badge badge-pill badge-danger">Closed</span>
                                     @endif
                                 </td>
-                                <td>{{ $ticket->created_at->format('d-m-Y H:i:s') }}</td>
-                                <td>{{ $ticket->updated_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $ticket->created_at->format('d-m-Y H:i') }}</td>
+                                <td>{{ $ticket->updated_at->format('d-m-Y H:i') }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-info btn-sm " title="Detail Ticket"><i class="fa fa-info-circle"></i></a>
-                                    <a href="{{ route('companies.edit', $ticket->id) }}" class="btn btn-success btn-sm" title="Update Status Ticket"><i class="far fa-edit"></i></a>
+                                    <a href="{{ route('tickets.detail', $ticket->id) }}" class="btn btn-info btn-sm " title="Detail Ticket"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-success btn-sm" title="Update Status Ticket"><i class="far fa-edit"></i></a>
                                 </td>
                             </tr>
                         @empty

@@ -40,7 +40,8 @@ $(function () {
         }
     });
     $(".datepicker").flatpickr({
-        dateFormat: 'Y-m-d',
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
         wrap: true
     });
 
