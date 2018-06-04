@@ -8,33 +8,40 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Monitoring</a></li>
                         <li class="breadcrumb-item"><a href="#">Ticket Management</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Manage Tickets</li>
+                        <li class="breadcrumb-item active" aria-current="page">List Tickets</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <div class="row align-items-center">
             <div class="col search-box">
-                <form method="GET" class="form-inline col-12 justify-content-end">
-                    <label for="filterBy">Search :</label>&nbsp;
-                    <div class="form-group">
-                        <select name="filter" class="custom-select" id="filterBy" onchange="myfunction()">
-                            <option value="">Filter by</option>
-                            <option value="company"{{ (Request::query('filter') == "company") ? ' selected':'' }}>Company</option>
-                            <option value="status"{{ (Request::query('filter') == "status") ? ' selected':'' }}>Status</option>
-                        </select>
+                <div class="row">
+                    <div class="col-1">
+                        <a href="{{ route('tickets.xls') }}" class="btn btn-success">Export to <i class="fa fa-file-excel" aria-hidden="true"></i></a>
                     </div>
-                    <div class="form-group mx-sm-0 col-4">
-                        <input type="search" style="display: block;" name="keyword" class="form-control col-12" id="inputKeyword" placeholder="Keyword" value="{{ Request::query('keyword') }}">
-                        <select style="display: none;" name="status" id="status" class="custom-select">
-                            <option value="1">Open</option>
-                            <option value="2">Process</option>
-                            <option value="3">Pending</option>
-                            <option value="4">Close</option>
-                        </select>
+                    <div class="col-11">
+                        <form method="GET" class="form-inline col-12 justify-content-end">
+                            <label for="filterBy">Search :</label>&nbsp;
+                            <div class="form-group">
+                                <select name="filter" class="custom-select" id="filterBy" onchange="myfunction()">
+                                    <option value="">Filter by</option>
+                                    <option value="company"{{ (Request::query('filter') == "company") ? ' selected':'' }}>Company</option>
+                                    <option value="status"{{ (Request::query('filter') == "status") ? ' selected':'' }}>Status</option>
+                                </select>
+                            </div>
+                            <div class="form-group mx-sm-0 col-4">
+                                <input type="search" style="display: block;" name="keyword" class="form-control col-12" id="inputKeyword" placeholder="Keyword" value="{{ Request::query('keyword') }}">
+                                <select style="display: none;" name="status" id="status" class="custom-select">
+                                    <option value="1">Open</option>
+                                    <option value="2">Process</option>
+                                    <option value="3">Pending</option>
+                                    <option value="4">Close</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Search</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-dark">Search</button>
-                </form>
+                </div>
             </div>
         </div>
         <div class="row mt-4">
@@ -59,7 +66,7 @@
                             <th scope="col">PIC Open</th>
                             <th scope="col">Status</th>
                             <th scope="col">Created At</th>
-                            <th width="200" scope="col">Action</th>
+                            <th width="200" scope="col">Show Detail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,9 +104,6 @@
                                 <td>{{ $ticket->created_at->format('d-m-Y H:i') }}</td>
                                 <td align="center">
                                     <a href="{{ route('tickets.detail', $ticket->id) }}" class="btn btn-info btn-sm " title="Detail Ticket - {{ $ticket->ticket_id }}"><i class="fa fa-info-circle"></i></a>
-                                    @if($ticket->status != 4)
-                                        <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-success btn-sm" title="Update Status Ticket - {{ $ticket->ticket_id }}"><i class="far fa-edit"></i></a>
-                                    @endif
                                 </td>
                             </tr>
                         @empty

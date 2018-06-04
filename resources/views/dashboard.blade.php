@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('tickets.manage') }}" style="color:#4CAF50;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}?filter=status&keyword=&status=1" style="color:#4CAF50;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="card card-position-1 text-white">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('tickets.manage') }}" style="color:#9db69f;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}?filter=status&keyword=&status=2" style="color:#9db69f;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="card card-position-1 text-white">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('tickets.manage') }}" style="color:#ffcd32;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}?filter=status&keyword=&status=3" style="color:#ffcd32;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="card card-position-1 text-white">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="card-footer" style="text-align:right;">
-                        <a href="{{ route('tickets.manage') }}" style="color:#ff0000;">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tickets.manage') }}?filter=status&keyword=&status=4" style="color:#ff0000;">View Details <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
         </div>

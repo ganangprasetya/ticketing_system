@@ -33,13 +33,13 @@
                                 <td align="center">{{ $ticketlog->user->fullname }}</td>
                                 <td align="center">
                                     @if($ticketlog->status == 1)
-                                        {{ $ticketlog->user->fullname }} Open New Ticket ID : {{ $ticketlog->ticket->ticket_id }}
+                                        Open New Ticket ID : {{ $ticketlog->ticket->ticket_id }}
                                     @elseif($ticketlog->status == 2)
-                                        {{ $ticketlog->user->fullname }} Processing Ticket ID : {{ $ticketlog->ticket->ticket_id }}
+                                        Processing Ticket ID : {{ $ticketlog->ticket->ticket_id }}
                                     @elseif($ticketlog->status == 3)
-                                        {{ $ticketlog->user->fullname }} Pending Ticket ID : {{ $ticketlog->ticket->ticket_id }}
+                                        Pending Ticket ID : {{ $ticketlog->ticket->ticket_id }}
                                     @elseif($ticketlog->status == 4)
-                                        {{ $ticketlog->user->fullname }} Close Ticket ID : {{ $ticketlog->ticket->ticket_id }}
+                                        Close Ticket ID : {{ $ticketlog->ticket->ticket_id }}
                                     @endif
                                 </td>
                                 <td align="center">{{ $ticketlog->created_at->format('d-m-Y H:i') }}</td>

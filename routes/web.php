@@ -51,6 +51,8 @@ Route::middleware(['auth', 'role:administrator|user'])->group(function(){
             Route::resource('tickets', 'TicketsController', ['except' => [
                 'show'
             ]]);
+            Route::get('tickets/lists', 'TicketsController@lists')->name('tickets.lists');
+            Route::get('tickets/lists/exportxls', 'TicketsController@exportxls')->name('tickets.xls');
             Route::get('tickets/manage', 'TicketsController@index')->name('tickets.manage');
             Route::get('tickets/logs', 'TicketsController@logs')->name('tickets.logs');
             Route::get('tickets/{id}', 'TicketsController@detail')->name('tickets.detail');

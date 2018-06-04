@@ -58,7 +58,7 @@
                                 <td align="center">{{ $user->fullname }}</td>
                                 <td align="center">{{ $user->email }}</td>
                                 <td class="text-center">{{ $user->roles[0]->display_name }}
-                                <td align="center">{{ $user->created_at->formatLocalized('%e %h %Y, %I:%M %p') }}</td>
+                                <td align="center">{{ $user->created_at->format('d-m-Y H:i') }}</td>
                             </tr>
                         @empty
                             <tr>

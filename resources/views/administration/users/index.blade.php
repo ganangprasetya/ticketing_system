@@ -65,7 +65,7 @@
                                 <th scope="row" class="text-center">{{ $loop->iteration + $offset }}</th>
                                 <td align="center">{{ $user->fullname }}</td>
                                 <td align="center">{{ $user->email }}</td>
-                                <td align="center">{{ $user->created_at->formatLocalized('%e %h %Y, %I:%M %p') }}</td>
+                                <td align="center">{{ $user->created_at->format('d-m-Y H:i') }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success btn-sm"><i class="far fa-edit"></i></a>
                                     <button type="submit" name="delete_button" class="btn btn-danger btn-sm" onclick="confirmButton(event, '#formDelete{{ $user->id }}');"><i class="far fa-trash-alt"></i></a>
