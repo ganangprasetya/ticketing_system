@@ -16,6 +16,7 @@
                                     <option value="">Filter by</option>
                                     <option value="company"{{ (Request::query('filter') == "company") ? ' selected':'' }}>Company</option>
                                     <option value="status"{{ (Request::query('filter') == "status") ? ' selected':'' }}>Status</option>
+                                    <option value="picopen"{{ (Request::query('filter') == "picopen") ? ' selected':'' }}>PIC Open</option>
                                 </select>
                             </div>
                             <div class="form-group mx-sm-0 col-4">

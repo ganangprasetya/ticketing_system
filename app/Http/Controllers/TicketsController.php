@@ -53,6 +53,18 @@ class TicketsController extends Controller
                         'keyword' => $keyword,
                     ]);
                     break;
+                case "picopen":
+                    $user = User::where('fullname', 'like', '%' . $keyword . '%')->first();
+                    if($user == NULL){
+                        $tickets = Ticket::where('user_id', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
+                    }else{
+                        $tickets = Ticket::where('user_id',$user->id)->latest()->paginate($paginate_limit);
+                    }
+                    $tickets->appends([
+                        'filter' => $filter,
+                        'keyword' => $keyword,
+                    ]);
+                    break;
                 // default:
                 //     $tickets = Ticket::where('name', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
             }
@@ -87,6 +99,18 @@ class TicketsController extends Controller
                         $tickets = Ticket::where('company_id', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
                     }else{
                         $tickets = Ticket::where('company_id',$company->id)->latest()->paginate($paginate_limit);
+                    }
+                    $tickets->appends([
+                        'filter' => $filter,
+                        'keyword' => $keyword,
+                    ]);
+                    break;
+                case "picopen":
+                    $user = User::where('fullname', 'like', '%' . $keyword . '%')->first();
+                    if($user == NULL){
+                        $tickets = Ticket::where('user_id', 'like', '%' . $keyword . '%')->latest()->paginate($paginate_limit);
+                    }else{
+                        $tickets = Ticket::where('user_id',$user->id)->latest()->paginate($paginate_limit);
                     }
                     $tickets->appends([
                         'filter' => $filter,
